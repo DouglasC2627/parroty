@@ -46,4 +46,4 @@ The success of this project will be measured by its ability to achieve the follo
 * **Ensure Consistency:** Create standardized, high-quality documentation across all projects, regardless of the individual developer's documentation habits.
 * **Seamless Integration:** Provide a smooth and non-intrusive user experience within Visual Studio Code, feeling like a native feature of the editor.
 
-This document will serve as our guide. Let's get started on building this powerful tool!
+This document will serve as the guide.
