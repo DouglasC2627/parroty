@@ -37,6 +37,18 @@ The MVP and future versions of the application will include the following featur
 
 ---
 
+## Tech Stack
+
+The tech stack of the project will be:
+* **Frontend:** Typescript and Node.js
+* **Backend:** Python
+* **API Library:** google-generativeai
+* **Communication Bridge:** child_process (Node.js module)
+* **Version Control:** Git and Github
+* **Packaging & Publishing:** vsce 
+
+---
+
 ## Final Product Goals
 
 The success of this project will be measured by its ability to achieve the following goals:
