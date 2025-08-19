@@ -8,7 +8,7 @@ This project aims to create an intelligent assistant, integrated directly into V
 
 ---
 
-## The Final Application: "Docu-Genius" VS Code Extension
+## The Final Application: "Parroty" VS Code Extension
 
 The final product will be a polished and intuitive **Visual Studio Code extension**. It will operate seamlessly within the editor, providing documentation generation capabilities on-demand. Users will interact with the extension through simple commands and context menu actions, making it a natural part of their development workflow.
 
