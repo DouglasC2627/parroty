@@ -8,15 +8,15 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 *This phase focuses on setting up the development environment, project structure, and a basic "proof-of-concept" to ensure the VS Code extension can communicate with the Python backend.*
 
-* [V] **1.1: Environment Setup**
-    * [V] 1.1.1: Initialize a Git repository with `git init`.
-    * [V] 1.1.2: Create a corresponding repository on GitHub and push the initial commit.
-    * [V] 1.1.3: Create a `.gitignore` file to exclude common files (`__pycache__`, `node_modules`, `.vscode`, `*.env`, etc.).
+* [x] **1.1: Environment Setup**
+    * [x] 1.1.1: Initialize a Git repository with `git init`.
+    * [x] 1.1.2: Create a corresponding repository on GitHub and push the initial commit.
+    * [x] 1.1.3: Create a `.gitignore` file to exclude common files (`__pycache__`, `node_modules`, `.vscode`, `*.env`, etc.).
 
-* [V] **1.2: Project Directory Structure**
-    * [V] 1.2.1: Create a root project folder.
-    * [V] 1.2.2: Inside the root, create a `backend` folder for all Python code.
-    * [V] 1.2.3: Inside the root, create an `extension` folder for all VS Code extension code (TypeScript/JavaScript).
+* [x] **1.2: Project Directory Structure**
+    * [x] 1.2.1: Create a root project folder.
+    * [x] 1.2.2: Inside the root, create a `backend` folder for all Python code.
+    * [x] 1.2.3: Inside the root, create an `extension` folder for all VS Code extension code (TypeScript/JavaScript).
 
 * [ ] **1.3: Python Backend Setup**
     * [ ] 1.3.1: Navigate into the `backend` folder.
