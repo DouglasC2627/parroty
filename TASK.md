@@ -18,12 +18,12 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 1.2.2: Inside the root, create a `backend` folder for all Python code.
     * [x] 1.2.3: Inside the root, create an `extension` folder for all VS Code extension code (TypeScript/JavaScript).
 
-* [ ] **1.3: Python Backend Setup**
-    * [ ] 1.3.1: Navigate into the `backend` folder.
-    * [ ] 1.3.2: Create a Python virtual environment (`python -m venv .venv`).
-    * [ ] 1.3.3: Activate the virtual environment.
-    * [ ] 1.3.4: Create a `requirements.txt` file.
-    * [ ] 1.3.5: Add and install initial dependencies (`pip install google-generativeai python-dotenv`).
+* [x] **1.3: Python Backend Setup**
+    * [x] 1.3.1: Navigate into the `backend` folder.
+    * [x] 1.3.2: Create a Python virtual environment (`python -m venv .venv`).
+    * [x] 1.3.3: Activate the virtual environment.
+    * [x] 1.3.4: Create a `requirements.txt` file.
+    * [x] 1.3.5: Add and install initial dependencies (`pip install google-generativeai python-dotenv`).
 
 * [ ] **1.4: VS Code Extension Setup**
     * [ ] 1.4.1: Install Node.js and npm globally.
