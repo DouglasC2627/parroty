@@ -1,4 +1,4 @@
-# TASK List: AI Documentation Assistant
+# TASK List: AI Documentation Assistant - Parroty
 
 This document outlines all the necessary steps to build, test, and deploy the AI-powered documentation assistant for Visual Studio Code. The tasks are organized into sequential phases.
 
@@ -32,7 +32,7 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 * [ ] **1.5: Establish Communication Bridge (Proof of Concept)**
     * [ ] 1.5.1: Write a simple Python script in `backend` that prints "Hello from Python!".
-    * [ ] 1.5.2: In the `extension` code, create a basic VS Code command (e.g., "docuGenius.helloWorld").
+    * [ ] 1.5.2: In the `extension` code, create a basic VS Code command (e.g., "parroty.helloWorld").
     * [ ] 1.5.3: Implement the command to execute the Python script using Node.js's `child_process`.
     * [ ] 1.5.4: Display the output from the Python script in a VS Code information message. **(Crucial step to validate the architecture)**.
 
@@ -61,14 +61,14 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 *This phase focuses on building the user-facing components in the VS Code extension and connecting them to the Python backend services.*
 
 * [ ] **3.1: Build "Generate Comments" Feature**
-    * [ ] 3.1.1: Register a command `docuGenius.generateComment` in the extension's `package.json`.
+    * [ ] 3.1.1: Register a command `parroty.generateComment` in the extension's `package.json`.
     * [ ] 3.1.2: Add a "Generate Comment" item to the editor's right-click context menu.
     * [ ] 3.1.3: Write the TypeScript logic to get the text currently selected by the user in the editor.
     * [ ] 3.1.4: Call the Python backend script, passing the selected text as an argument.
     * [ ] 3.1.5: Get the returned comment and insert it above the selected code block.
 
 * [ ] **3.2: Build "Generate README.md" Feature**
-    * [ ] 3.2.1: Register a command `docuGenius.generateReadme` that can be run from the Command Palette.
+    * [ ] 3.2.1: Register a command `parroty.generateReadme` that can be run from the Command Palette.
     * [ ] 3.2.2: Write TypeScript logic to scan the current workspace, listing directories and files.
     * [ ] 3.2.3: (Optional) Read the contents of key files like `package.json` or `requirements.txt` to identify dependencies.
     * [ ] 3.2.4: Call the Python backend's README generation service with this project information.
