@@ -27,7 +27,7 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 * [ ] **1.4: VS Code Extension Setup**
     * [x] 1.4.1: Install Node.js and npm globally.
-    * [ ] 1.4.2: Install Yeoman and the VS Code Extension Generator (`npm install -g yo generator-code`).
+    * [x] 1.4.2: Install Yeoman and the VS Code Extension Generator (`npm install -g yo generator-code`).
     * [ ] 1.4.3: Navigate into the `extension` folder and run `yo code` to scaffold a new TypeScript extension.
 
 * [ ] **1.5: Establish Communication Bridge (Proof of Concept)**
