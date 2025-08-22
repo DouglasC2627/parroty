@@ -5,4 +5,4 @@ A personal project to practice with vibe coding and git.
 
 
 ## 🚧 Under Construction
-Project is currently a work-in-progress. The code is brewing, the AI is learning.
+Project is currently a work-in-progress. The code is brewing.
