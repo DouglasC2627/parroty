@@ -9,24 +9,37 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "parroty" is now active!');
 
 	const disposable = vscode.commands.registerCommand('parroty.helloWorld', () => {
-		const pythonScriptPath = path.join(context.extensionPath, '.._backend', 'main.py');
-		const pythonProcess = spawn('python', [pythonScriptPath]);
+		const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+		// Use 'python3' which is more standard. Add error handling for spawn.
+		const pythonProcess = spawn('python3', [pythonScriptPath]);
+
+		let stdout = '';
+		let stderr = '';
 
 		pythonProcess.stdout.on('data', (data) => {
-			vscode.window.showInformationMessage(data.toString());
+			stdout += data.toString();
 		});
 
 		pythonProcess.stderr.on('data', (data) => {
+			stderr += data.toString();
 			console.error(`stderr: ${data}`);
-			vscode.window.showErrorMessage(`Error: ${data}`);
 		});
 
 		pythonProcess.on('close', (code) => {
 			console.log(`child process exited with code ${code}`);
+			if (code === 0) {
+				vscode.window.showInformationMessage(stdout);
+			} else {
+				vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
+			}
+		});
+
+		pythonProcess.on('error', (err) => {
+			console.error('Failed to start subprocess.', err);
+			vscode.window.showErrorMessage('Failed to start Python process. Make sure "python3" is in your PATH.');
 		});
 	});
 
 	context.subscriptions.push(disposable);
 }
-
 export function deactivate() {}

@@ -30,11 +30,11 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 1.4.2: Install Yeoman and the VS Code Extension Generator (`npm install -g yo generator-code`).
     * [x] 1.4.3: Navigate into the `extension` folder and run `yo code` to scaffold a new TypeScript extension.
 
-* [ ] **1.5: Establish Communication Bridge (Proof of Concept)**
+* [x] **1.5: Establish Communication Bridge (Proof of Concept)**
     * [x] 1.5.1: Write a simple Python script in `backend` that prints "Hello from Python!".
     * [x] 1.5.2: In the `extension` code, create a basic VS Code command (e.g., "parroty.helloWorld").
     * [x] 1.5.3: Implement the command to execute the Python script using Node.js's `child_process`.
-    * [ ] 1.5.4: Display the output from the Python script in a VS Code information message. **(Crucial step to validate the architecture)**.
+    * [x] 1.5.4: Display the output from the Python script in a VS Code information message. **(Crucial step to validate the architecture)**.
 
 ---
 
