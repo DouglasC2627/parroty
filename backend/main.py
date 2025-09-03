@@ -23,7 +23,7 @@ def generate_comment(code_snippet: str) -> str:
         **Instructions:**
         1.  Analyze the code to understand its primary function.
         2.  Summarize what the code *does* in a single, clear sentence.
-        3.  Enclose the summary in triple quotes like this: """This is a docstring."""
+        3.  Enclose the summary in **triple quotes** as a docstring.
         4.  Do NOT explain *how* the code works.
         5.  Only output the docstring itself, with no extra text or explanations.
 
@@ -35,6 +35,18 @@ def generate_comment(code_snippet: str) -> str:
     response = model.generate_content(prompt=summarization_prompt)
     return response.text
 
+
+def generate_readme(project_structure: str, file_contents: list) -> str:
+    """Generates a README.md file for a given project structure and file contents.
+
+    Args:
+        project_structure: The project structure to generate a README.md file for.
+        file_contents: The file contents to generate a README.md file for.
+
+    Returns:
+        The generated README.md file.
+    """
+    pass
 
 if __name__ == "__main__":
     import sys
