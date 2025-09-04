@@ -49,10 +49,10 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 2.1.4: Implement a way to securely manage the Gemini API key (e.g., using environment variables).
     * [x] 2.1.5: Create a main script in `backend` that can be called from the command line, taking code as an argument and printing the generated comment.
 
-* [ ] **2.2: Implement README Generation Logic**
+* [x] **2.2: Implement README Generation Logic**
     * [x] 2.2.1: Create a Python function `generate_readme(project_structure: str, file_contents: list) -> str`.
-    * [ ] 2.2.2: Engineer a prompt that takes the project structure (e.g., directory listing, key file contents) and instructs the AI to generate a full `README.md` file.
-    * [ ] 2.2.3: Update the main script to handle a different command-line argument for generating a README.
+    * [x] 2.2.2: Engineer a prompt that takes the project structure (e.g., directory listing, key file contents) and instructs the AI to generate a full `README.md` file.
+    * [x] 2.2.3: Update the main script to handle a different command-line argument for generating a README.
 
 ---
 
