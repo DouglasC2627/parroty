@@ -3,6 +3,13 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+try:
+    MODEL = genai.GenerativeModel("gemini-2.5-flash")
+except Exception as e:
+    print(f"Error creating GenerativeModel: {e}")
+    MODEL = None
+
 
 def generate_comment(code_snippet: str) -> str:
     """
@@ -14,9 +21,6 @@ def generate_comment(code_snippet: str) -> str:
     Returns:
         The generated comment.
     """
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    model = genai.GenerativeModel("gemini-pro")
-
     summarization_prompt = f"""
         You are an expert programmer writing documentation. Your task is to write a concise, one-line summary docstring for the given Python code.
 
@@ -29,11 +33,12 @@ def generate_comment(code_snippet: str) -> str:
 
         **Code Snippet to summarize into comments:**
         \n```\n{code_snippet}\n```\n
-        {code_snippet} 
     """
 
-    response = model.generate_content(prompt=summarization_prompt)
-    return response.text
+    if MODEL:
+        response = MODEL.generate_content(summarization_prompt)
+        return response.text
+    return "Error: Model not initialized."
 
 
 def generate_readme(project_structure: str, file_contents: list) -> str:
@@ -46,9 +51,6 @@ def generate_readme(project_structure: str, file_contents: list) -> str:
     Returns:
         The generated README.md file.
     """
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-    model = genai.GenerativeModel("gemini-pro")
-
     readme_prompt = f"""
         You are an expert technical writer tasked with creating a high-quality `README.md` file for a software project.
 
@@ -76,14 +78,55 @@ def generate_readme(project_structure: str, file_contents: list) -> str:
 
         **Key File Contents:**
         ```
-        ${"".join(file_contents)}
+        {"".join(file_contents)}
         ```
 
         **Generate the `README.md` file now.**
     """
 
-    response = model.generate_content(prompt=readme_prompt)
-    return response.text
+    if MODEL:
+        response = MODEL.generate_content(readme_prompt)
+        return response.text
+    return "Error: Model not initialized."
+
+
+def get_project_details(root_path: str) -> tuple[str, list[str]]:
+    """
+    Scans a project directory to get its structure and key file contents.
+    Ignores common unnecessary directories.
+    """
+    project_structure_list = []
+    file_contents = []
+    ignored_dirs = {'.git', '__pycache__', 'node_modules', '.venv', '.vscode'}
+    key_files = {'requirements.txt', 'package.json', 'ABOUT.md'}
+
+    # Correctly set the root for display purposes
+    project_root_name = os.path.basename(root_path)
+
+    for root, dirs, files in os.walk(root_path, topdown=True):
+        # Exclude ignored directories from traversal
+        dirs[:] = [d for d in dirs if d not in ignored_dirs]
+
+        relative_path = os.path.relpath(root, root_path)
+        level = relative_path.count(os.sep) if relative_path != '.' else -1
+
+        if relative_path == '.':
+            indent = ''
+            project_structure_list.append(f"{project_root_name}/")
+        else:
+            indent = '  ' * level
+            project_structure_list.append(f"{indent}└── {os.path.basename(root)}/")
+
+        sub_indent = '  ' * (level + 1)
+        for f in files:
+            project_structure_list.append(f"{sub_indent}├── {f}")
+            if f in key_files:
+                with open(os.path.join(root, f), 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    file_contents.append(f"--- Content of {os.path.join(relative_path, f)} ---\n{content}\n\n")
+
+    return "\n".join(project_structure_list), file_contents
+
 
 if __name__ == "__main__":
     import sys
@@ -99,9 +142,12 @@ if __name__ == "__main__":
         comment = generate_comment(args.comment)
         print(comment)
     elif args.readme:
-        # This is a placeholder for the actual project structure and file contents
-        project_structure = "- backend/\n- extension/"
-        file_contents = ["backend/requirements.txt: google-generativeai, python-dotenv"]
+        # Scan the parent directory for project structure and key files
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        project_structure, file_contents = get_project_details(project_root)
+        print("--- Analyzing Project Structure ---")
+        print(project_structure)
+        print("\n--- Generating README ---")
         readme = generate_readme(project_structure, file_contents)
         print(readme)
     else:
