@@ -11,7 +11,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:parroty.helloWorld"
+    "onCommand:parroty.helloWorld",
+    "onCommand:parroty.generateComment"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -19,8 +20,20 @@
       {
         "command": "parroty.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "parroty.generateComment",
+        "title": "Generate Comment"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "parroty.generateComment",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
