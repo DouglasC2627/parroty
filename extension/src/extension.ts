@@ -40,6 +40,46 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	});
 
-	context.subscriptions.push(disposable);
+	const generateCommentDisposable = vscode.commands.registerCommand('parroty.generateComment', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			if (selectedText) {
+				const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+				const pythonProcess = spawn('python3', [pythonScriptPath, 'comment', selectedText]);
+
+				let stdout = '';
+				let stderr = '';
+
+				pythonProcess.stdout.on('data', (data) => {
+					stdout += data.toString();
+				});
+
+				pythonProcess.stderr.on('data', (data) => {
+					stderr += data.toString();
+					console.error(`stderr: ${data}`);
+				});
+
+				pythonProcess.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+					if (code === 0) {
+						editor.edit(editBuilder => {
+							editBuilder.insert(selection.start, stdout);
+						});
+					} else {
+						vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
+					}
+				});
+
+				pythonProcess.on('error', (err) => {
+					console.error('Failed to start subprocess.', err);
+					vscode.window.showErrorMessage('Failed to start Python process. Make sure "python3" is in your PATH.');
+				});
+			}
+		}
+	});
+
+	context.subscriptions.push(disposable, generateCommentDisposable);
 }
 export function deactivate() {}
