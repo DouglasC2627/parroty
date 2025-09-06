@@ -60,12 +60,12 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 *This phase focuses on building the user-facing components in the VS Code extension and connecting them to the Python backend services.*
 
-* [ ] **3.1: Build "Generate Comments" Feature**
-    * [ ] 3.1.1: Register a command `parroty.generateComment` in the extension's `package.json`.
-    * [ ] 3.1.2: Add a "Generate Comment" item to the editor's right-click context menu.
-    * [ ] 3.1.3: Write the TypeScript logic to get the text currently selected by the user in the editor.
-    * [ ] 3.1.4: Call the Python backend script, passing the selected text as an argument.
-    * [ ] 3.1.5: Get the returned comment and insert it above the selected code block.
+* [x] **3.1: Build "Generate Comments" Feature**
+    * [x] 3.1.1: Register a command `parroty.generateComment` in the extension's `package.json`.
+    * [x] 3.1.2: Add a "Generate Comment" item to the editor's right-click context menu.
+    * [x] 3.1.3: Write the TypeScript logic to get the text currently selected by the user in the editor.
+    * [x] 3.1.4: Call the Python backend script, passing the selected text as an argument.
+    * [x] 3.1.5: Get the returned comment and insert it above the selected code block.
 
 * [ ] **3.2: Build "Generate README.md" Feature**
     * [ ] 3.2.1: Register a command `parroty.generateReadme` that can be run from the Command Palette.
