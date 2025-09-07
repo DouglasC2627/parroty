@@ -83,7 +83,22 @@ export function activate(context: vscode.ExtensionContext) {
 	const generateReadmeDisposable = vscode.commands.registerCommand('parroty.generateReadme', async () => {
 		const files = await vscode.workspace.findFiles('**/*', '**/node_modules/**');
 		const fileList = files.map(file => file.path).join('\n');
-		vscode.window.showInformationMessage(`Files in workspace:\n${fileList}`);
+
+		let keyFilesContent = '';
+		const packageJsonFile = files.find(file => file.path.endsWith('package.json'));
+		const requirementsTxtFile = files.find(file => file.path.endsWith('requirements.txt'));
+
+		if (packageJsonFile) {
+			const content = await vscode.workspace.fs.readFile(packageJsonFile);
+			keyFilesContent += `package.json:\n${content.toString()}\n\n`;
+		}
+
+		if (requirementsTxtFile) {
+			const content = await vscode.workspace.fs.readFile(requirementsTxtFile);
+			keyFilesContent += `requirements.txt:\n${content.toString()}\n\n`;
+		}
+
+		vscode.window.showInformationMessage(`Files in workspace:\n${fileList}\n\n${keyFilesContent}`);
 	});
 
 	context.subscriptions.push(disposable, generateCommentDisposable, generateReadmeDisposable);
