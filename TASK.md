@@ -67,12 +67,12 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 3.1.4: Call the Python backend script, passing the selected text as an argument.
     * [x] 3.1.5: Get the returned comment and insert it above the selected code block.
 
-* [ ] **3.2: Build "Generate README.md" Feature**
-    * [ ] 3.2.1: Register a command `parroty.generateReadme` that can be run from the Command Palette.
-    * [ ] 3.2.2: Write TypeScript logic to scan the current workspace, listing directories and files.
-    * [ ] 3.2.3: (Optional) Read the contents of key files like `package.json` or `requirements.txt` to identify dependencies.
-    * [ ] 3.2.4: Call the Python backend's README generation service with this project information.
-    * [ ] 3.2.5: Create a new file named `README.md` in the root of the workspace and write the generated content to it.
+* [x] **3.2: Build "Generate README.md" Feature**
+    * [x] 3.2.1: Register a command `parroty.generateReadme` that can be run from the Command Palette.
+    * [x] 3.2.2: Write TypeScript logic to scan the current workspace, listing directories and files.
+    * [x] 3.2.3: (Optional) Read the contents of key files like `package.json` or `requirements.txt` to identify dependencies.
+    * [x] 3.2.4: Call the Python backend's README generation service with this project information.
+    * [x] 3.2.5: Create a new file named `README.md` in the root of the workspace and write the generated content to it.
 
 * [ ] **3.3: Implement Configuration**
     * [ ] 3.3.1: Add a configuration section to `package.json` to allow users to set their Gemini API key in the VS Code settings.

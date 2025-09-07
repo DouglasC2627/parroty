@@ -113,10 +113,15 @@ export function activate(context: vscode.ExtensionContext) {
 			console.error(`stderr: ${data}`);
 		});
 
-		pythonProcess.on('close', (code) => {
+		pythonProcess.on('close', async (code) => {
 			console.log(`child process exited with code ${code}`);
 			if (code === 0) {
-				vscode.window.showInformationMessage(stdout);
+				const workspaceFolders = vscode.workspace.workspaceFolders;
+				if (workspaceFolders) {
+					const readmePath = vscode.Uri.joinPath(workspaceFolders[0].uri, 'README.md');
+					await vscode.workspace.fs.writeFile(readmePath, Buffer.from(stdout, 'utf8'));
+					vscode.window.showInformationMessage('README.md created successfully!');
+				}
 			} else {
 				vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
 			}
