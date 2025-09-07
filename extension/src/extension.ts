@@ -98,7 +98,34 @@ export function activate(context: vscode.ExtensionContext) {
 			keyFilesContent += `requirements.txt:\n${content.toString()}\n\n`;
 		}
 
-		vscode.window.showInformationMessage(`Files in workspace:\n${fileList}\n\n${keyFilesContent}`);
+		const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+		const pythonProcess = spawn('python3', [pythonScriptPath, 'readme', fileList, keyFilesContent]);
+
+		let stdout = '';
+		let stderr = '';
+
+		pythonProcess.stdout.on('data', (data) => {
+			stdout += data.toString();
+		});
+
+		pythonProcess.stderr.on('data', (data) => {
+			stderr += data.toString();
+			console.error(`stderr: ${data}`);
+		});
+
+		pythonProcess.on('close', (code) => {
+			console.log(`child process exited with code ${code}`);
+			if (code === 0) {
+				vscode.window.showInformationMessage(stdout);
+			} else {
+				vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
+			}
+		});
+
+		pythonProcess.on('error', (err) => {
+			console.error('Failed to start subprocess.', err);
+			vscode.window.showErrorMessage('Failed to start Python process. Make sure "python3" is in your PATH.');
+		});
 	});
 
 	context.subscriptions.push(disposable, generateCommentDisposable, generateReadmeDisposable);
