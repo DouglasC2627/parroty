@@ -46,8 +46,13 @@ export function activate(context: vscode.ExtensionContext) {
 			const selection = editor.selection;
 			const selectedText = editor.document.getText(selection);
 			if (selectedText) {
+				const config = vscode.workspace.getConfiguration('parroty');
+				const apiKey = config.get<string>('geminiApiKey');
+
 				const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
-				const pythonProcess = spawn('python3', [pythonScriptPath, 'comment', selectedText]);
+				const pythonProcess = spawn('python3', [pythonScriptPath, 'comment', selectedText], {
+					env: { ...process.env, GEMINI_API_KEY: apiKey }
+				});
 
 				let stdout = '';
 				let stderr = '';
@@ -98,8 +103,13 @@ export function activate(context: vscode.ExtensionContext) {
 			keyFilesContent += `requirements.txt:\n${content.toString()}\n\n`;
 		}
 
+		const config = vscode.workspace.getConfiguration('parroty');
+		const apiKey = config.get<string>('geminiApiKey');
+
 		const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
-		const pythonProcess = spawn('python3', [pythonScriptPath, 'readme', fileList, keyFilesContent]);
+		const pythonProcess = spawn('python3', [pythonScriptPath, 'readme', fileList, keyFilesContent], {
+			env: { ...process.env, GEMINI_API_KEY: apiKey }
+		});
 
 		let stdout = '';
 		let stderr = '';

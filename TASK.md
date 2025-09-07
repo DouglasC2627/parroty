@@ -74,9 +74,9 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 3.2.4: Call the Python backend's README generation service with this project information.
     * [x] 3.2.5: Create a new file named `README.md` in the root of the workspace and write the generated content to it.
 
-* [ ] **3.3: Implement Configuration**
-    * [ ] 3.3.1: Add a configuration section to `package.json` to allow users to set their Gemini API key in the VS Code settings.
-    * [ ] 3.3.2: Read this configuration in the extension and pass it securely to the Python script.
+* [x] **3.3: Implement Configuration**
+    * [x] 3.3.1: Add a configuration section to `package.json` to allow users to set their Gemini API key in the VS Code settings.
+    * [x] 3.3.2: Read this configuration in the extension and pass it securely to the Python script.
 
 ---
 

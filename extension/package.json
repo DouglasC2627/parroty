@@ -37,6 +37,16 @@
           "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "Parroty",
+      "properties": {
+        "parroty.geminiApiKey": {
+          "type": "string",
+          "description": "Your Gemini API key.",
+          "default": ""
+        }
+      }
     }
   },
   "scripts": {
