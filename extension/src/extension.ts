@@ -80,6 +80,12 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	context.subscriptions.push(disposable, generateCommentDisposable);
+	const generateReadmeDisposable = vscode.commands.registerCommand('parroty.generateReadme', async () => {
+		const files = await vscode.workspace.findFiles('**/*', '**/node_modules/**');
+		const fileList = files.map(file => file.path).join('\n');
+		vscode.window.showInformationMessage(`Files in workspace:\n${fileList}`);
+	});
+
+	context.subscriptions.push(disposable, generateCommentDisposable, generateReadmeDisposable);
 }
 export function deactivate() {}
