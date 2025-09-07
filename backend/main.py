@@ -4,13 +4,20 @@ from dotenv import load_dotenv
 import sys
 import argparse
 
-load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+load_dotenv() # For local development convenience
+
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    print("Error: GEMINI_API_KEY environment variable not set.", file=sys.stderr)
+    sys.exit(1)
+
+genai.configure(api_key=api_key)
 try:
     MODEL = genai.GenerativeModel("gemini-2.5-flash")
 except Exception as e:
-    print(f"Error creating GenerativeModel: {e}")
+    print(f"Error creating GenerativeModel: {e}", file=sys.stderr)
     MODEL = None
+    sys.exit(1)
 
 def generate_comment(code_snippet: str) -> str:
     """
@@ -89,18 +96,29 @@ def generate_readme(project_structure: str, file_contents: str) -> str:
     return "Error: Model not initialized."
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        command = sys.argv[1]
-        if command == "comment":
-            code_snippet = sys.argv[2]
-            comment = generate_comment(code_snippet)
-            print(comment)
-        elif command == "readme":
-            project_structure = sys.argv[2]
-            file_contents = sys.argv[3]
-            readme = generate_readme(project_structure, file_contents)
-            print(readme)
-        else:
-            print("Invalid command. Available commands: comment, readme")
-    else:
+    parser = argparse.ArgumentParser(description="Parroty AI Documentation Assistant")
+    parser.add_argument('command', nargs='?', help="The command to execute: 'comment' or 'readme'.")
+    parser.add_argument('args', nargs='*', help="Arguments for the command.")
+
+    parsed_args = parser.parse_args()
+
+    if parsed_args.command == "comment":
+        if len(parsed_args.args) < 1:
+            print("Error: 'comment' command requires a code snippet.", file=sys.stderr)
+            sys.exit(1)
+        code_snippet = parsed_args.args[0]
+        comment = generate_comment(code_snippet)
+        print(comment)
+    elif parsed_args.command == "readme":
+        if len(parsed_args.args) < 2:
+            print("Error: 'readme' command requires project structure and file contents.", file=sys.stderr)
+            sys.exit(1)
+        project_structure = parsed_args.args[0]
+        file_contents = parsed_args.args[1]
+        readme = generate_readme(project_structure, file_contents)
+        print(readme)
+    elif parsed_args.command is None:
         print("Hello from Python!")
+    else:
+        print(f"Invalid command: {parsed_args.command}. Available commands: comment, readme", file=sys.stderr)
+        sys.exit(1)

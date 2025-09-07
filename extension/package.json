@@ -11,16 +11,12 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:parroty.helloWorld",
-    "onCommand:parroty.generateComment"
+    "onCommand:parroty.generateComment",
+    "onCommand:parroty.generateReadme"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "parroty.helloWorld",
-        "title": "Hello World"
-      },
       {
         "command": "parroty.generateComment",
         "title": "Generate Comment"

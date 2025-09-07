@@ -8,38 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 	console.log('Congratulations, your extension "parroty" is now active!');
 
-	const disposable = vscode.commands.registerCommand('parroty.helloWorld', () => {
-		const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
-		// Use 'python3' which is more standard. Add error handling for spawn.
-		const pythonProcess = spawn('python3', [pythonScriptPath]);
-
-		let stdout = '';
-		let stderr = '';
-
-		pythonProcess.stdout.on('data', (data) => {
-			stdout += data.toString();
-		});
-
-		pythonProcess.stderr.on('data', (data) => {
-			stderr += data.toString();
-			console.error(`stderr: ${data}`);
-		});
-
-		pythonProcess.on('close', (code) => {
-			console.log(`child process exited with code ${code}`);
-			if (code === 0) {
-				vscode.window.showInformationMessage(stdout);
-			} else {
-				vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
-			}
-		});
-
-		pythonProcess.on('error', (err) => {
-			console.error('Failed to start subprocess.', err);
-			vscode.window.showErrorMessage('Failed to start Python process. Make sure "python3" is in your PATH.');
-		});
-	});
-
 	const generateCommentDisposable = vscode.commands.registerCommand('parroty.generateComment', () => {
 		const editor = vscode.window.activeTextEditor;
 		if (editor) {
@@ -48,6 +16,11 @@ export function activate(context: vscode.ExtensionContext) {
 			if (selectedText) {
 				const config = vscode.workspace.getConfiguration('parroty');
 				const apiKey = config.get<string>('geminiApiKey');
+
+				if (!apiKey) {
+					vscode.window.showErrorMessage('Please set your Gemini API key in the Parroty settings.');
+					return;
+				}
 
 				const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
 				const pythonProcess = spawn('python3', [pythonScriptPath, 'comment', selectedText], {
@@ -106,6 +79,11 @@ export function activate(context: vscode.ExtensionContext) {
 		const config = vscode.workspace.getConfiguration('parroty');
 		const apiKey = config.get<string>('geminiApiKey');
 
+		if (!apiKey) {
+			vscode.window.showErrorMessage('Please set your Gemini API key in the Parroty settings.');
+			return;
+		}
+
 		const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
 		const pythonProcess = spawn('python3', [pythonScriptPath, 'readme', fileList, keyFilesContent], {
 			env: { ...process.env, GEMINI_API_KEY: apiKey }
@@ -143,6 +121,6 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	});
 
-	context.subscriptions.push(disposable, generateCommentDisposable, generateReadmeDisposable);
+	context.subscriptions.push(generateCommentDisposable, generateReadmeDisposable);
 }
 export function deactivate() {}
