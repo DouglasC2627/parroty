@@ -24,6 +24,10 @@
       {
         "command": "parroty.generateComment",
         "title": "Generate Comment"
+      },
+      {
+        "command": "parroty.generateReadme",
+        "title": "Generate README.md"
       }
     ],
     "menus": {
