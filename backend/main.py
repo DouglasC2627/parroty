@@ -30,21 +30,21 @@ def generate_comment(code_snippet: str) -> str:
         The generated comment.
     """
     summarization_prompt = f"""
-        You are an expert programmer writing documentation. Your task is to write a concise, one-line summary docstring for the given Python code.
+        You are an expert programmer writing documentation. Your task is to write a concise, one-line summary for the given Python code.
 
         **Instructions:**
         1.  Analyze the code to understand its primary function.
         2.  Summarize what the code *does* in a single, clear sentence.
-        3.  Enclose the summary in **triple quotes** as a docstring.
-        4.  Do NOT explain *how* the code works.
-        5.  Only output the docstring itself, with no extra text or explanations.
+        3.  Do NOT explain *how* the code works.
+        4.  Only output the summary sentence itself, with no extra text, explanations, or quotation marks.
 
-        **Code Snippet to summarize into comments:**
+        **Code Snippet to summarize:**
         \n```\n{code_snippet}\n```\n    """
 
     if MODEL:
         response = MODEL.generate_content(summarization_prompt)
-        return response.text
+        # wrap response into docstring.
+        return f'"""{response.text.strip()}"""'
     return "Error: Model not initialized."
 
 def generate_readme(project_structure: str, file_contents: str) -> str:
