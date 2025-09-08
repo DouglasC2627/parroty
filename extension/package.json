@@ -16,11 +16,11 @@
     "commands": [
       {
         "command": "parroty.generateComment",
-        "title": "Generate Comment"
+        "title": "parroty > Generate Comment"
       },
       {
         "command": "parroty.generateReadme",
-        "title": "Generate README.md"
+        "title": "parroty > Generate README.md"
       }
     ],
     "menus": {
