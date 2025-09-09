@@ -3,6 +3,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 import sys
 import argparse
+import re
 
 load_dotenv() # For local development convenience
 
@@ -18,6 +19,7 @@ except Exception as e:
     print(f"Error creating GenerativeModel: {e}", file=sys.stderr)
     MODEL = None
     sys.exit(1)
+
 
 def generate_comment(code_snippet: str) -> str:
     """
@@ -46,6 +48,24 @@ def generate_comment(code_snippet: str) -> str:
         # wrap response into docstring.
         return f'"""{response.text.strip()}"""'
     return "Error: Model not initialized."
+
+
+def clean_markdown_response(text: str) -> str:
+    """
+    Removes markdown code block delimiters from the response.
+    
+    Args:
+        text: The raw text that might contain markdown code blocks
+        
+    Returns:
+        Cleaned text without code block delimiters
+    """
+    # Remove ```markdown or ``` at the start
+    text = re.sub(r'^```(?:markdown)?\s*\n?', '', text.strip())
+    # Remove ``` at the end
+    text = re.sub(r'\n?```\s*$', '', text)
+    return text.strip()
+
 
 def generate_readme(project_structure: str, file_contents: str) -> str:
     """Generates a README.md file for a given project structure and file contents.
@@ -92,8 +112,10 @@ def generate_readme(project_structure: str, file_contents: str) -> str:
 
     if MODEL:
         response = MODEL.generate_content(readme_prompt)
-        return response.text
+        cleaned_response = clean_markdown_response(response.text)
+        return cleaned_response.text
     return "Error: Model not initialized."
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parroty AI Documentation Assistant")
