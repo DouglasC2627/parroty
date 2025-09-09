@@ -26,7 +26,7 @@ echo "Installing dependencies from requirements.txt..."
 source "$VENV_DIR/bin/activate"
 pip install -r "$BACKEND_DIR/requirements.txt"
 
-echo "Setup complete. You can now run the tests."
+echo "Setup complete."
 echo ""
 echo "Note: The extension will automatically use the virtual environment."
 echo "Make sure to set your Gemini API key in VS Code settings:"
