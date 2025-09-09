@@ -46,7 +46,7 @@ def generate_comment(code_snippet: str) -> str:
     if MODEL:
         response = MODEL.generate_content(summarization_prompt)
         # wrap response into docstring.
-        return f'"""{response.text.strip()}"""'
+        return f'#{response.text.strip()}'
     return "Error: Model not initialized."
 
 
