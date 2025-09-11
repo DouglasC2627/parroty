@@ -58,6 +58,56 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	const generateDocstringDisposable = vscode.commands.registerCommand('parroty.generateDocstring', () => {
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const selection = editor.selection;
+			const selectedText = editor.document.getText(selection);
+			if (selectedText) {
+				const config = vscode.workspace.getConfiguration('parroty');
+				const apiKey = config.get<string>('geminiApiKey');
+
+				if (!apiKey) {
+					vscode.window.showErrorMessage('Please set your Gemini API key in the Parroty settings.');
+					return;
+				}
+
+				const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+				const pythonProcess = spawn('python3', [pythonScriptPath, 'docstring', selectedText], {
+					env: { ...process.env, GEMINI_API_KEY: apiKey }
+				});
+
+				let stdout = '';
+				let stderr = '';
+
+				pythonProcess.stdout.on('data', (data) => {
+					stdout += data.toString();
+				});
+
+				pythonProcess.stderr.on('data', (data) => {
+					stderr += data.toString();
+					console.error(`stderr: ${data}`);
+				});
+
+				pythonProcess.on('close', (code) => {
+					console.log(`child process exited with code ${code}`);
+					if (code === 0) {
+						editor.edit(editBuilder => {
+							editBuilder.insert(selection.start, stdout);
+						});
+					} else {
+						vscode.window.showErrorMessage(`Python script exited with code ${code}: ${stderr}`);
+					}
+				});
+
+				pythonProcess.on('error', (err) => {
+					console.error('Failed to start subprocess.', err);
+					vscode.window.showErrorMessage('Failed to start Python process. Make sure "python3" is in your PATH.');
+				});
+			}
+		}
+	});
+
 	const generateReadmeDisposable = vscode.commands.registerCommand('parroty.generateReadme', async () => {
 		const files = await vscode.workspace.findFiles('**/*', '**/node_modules/**');
 		const fileList = files.map(file => file.path).join('\n');
@@ -121,6 +171,6 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	});
 
-	context.subscriptions.push(generateCommentDisposable, generateReadmeDisposable);
+	context.subscriptions.push(generateCommentDisposable, generateDocstringDisposable, generateReadmeDisposable);
 }
 export function deactivate() {}

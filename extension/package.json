@@ -19,6 +19,10 @@
         "title": "parroty > Generate Comment"
       },
       {
+        "command": "parroty.generateDocstring",
+        "title": "parroty > Generate Docstring"
+      },
+      {
         "command": "parroty.generateReadme",
         "title": "parroty > Generate README.md"
       }
@@ -27,6 +31,10 @@
       "editor/context": [
         {
           "command": "parroty.generateComment",
+          "group": "navigation"
+        },
+        {
+          "command": "parroty.generateDocstring",
           "group": "navigation"
         }
       ]
