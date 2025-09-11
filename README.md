@@ -1,8 +1,8 @@
 # Parroty
 Automatically generate insightful code comments and beautiful `README.md` files.
 
-A personal project to practice with vibe coding.
+A personal project to experiment with vibe coding.
 
 
 ## 🚧 Under Construction
-Project is currently a work-in-progress. The code is brewing.
+Project is currently a work-in-progress. Code brewing.
