@@ -45,8 +45,37 @@ def generate_comment(code_snippet: str) -> str:
 
     if MODEL:
         response = MODEL.generate_content(summarization_prompt)
-        # wrap response into docstring.
+        # wrap response into comment.
         return f'#{response.text.strip()}'
+    return "Error: Model not initialized."
+
+def generate_docstring(code_snippet: str) -> str:
+    """
+    Generates a docstring for a given code snippet.
+
+    Args:
+        code_snippet: The code snippet to generate a docstring for.
+
+    Returns:
+        The generated docstring.
+    """
+    docstring_prompt = f"""
+        You are an expert programmer writing documentation. Your task is to write a Python docstring for the given code snippet.
+
+        **Instructions:**
+        1.  Analyze the code to understand its purpose, arguments, and what it returns.
+        2.  Write a concise one-line summary of the function's purpose.
+        3.  Document each argument under an `Args:` section, explaining what it is.
+        4.  Document the return value under a `Returns:` section, explaining what is returned.
+        5.  The output should be only the content, with no extra text, explanations, or quotation marks.
+
+        **Code Snippet to summarize:**
+        \n```\n{code_snippet}\n```\n    """
+
+    if MODEL:
+        response = MODEL.generate_content(docstring_prompt)
+        # wrap response into docstring.
+        return f'{response.text}'
     return "Error: Model not initialized."
 
 
@@ -63,7 +92,7 @@ def clean_markdown_response(text: str) -> str:
     # Remove ```markdown or ``` at the start
     text = re.sub(r'^```(?:markdown)?\s*\n?', '', text.strip())
     # Remove ``` at the end
-    text = re.sub(r'\n?```\s*$', '', text)
+    text = re.sub(r'\n?```\s*\n?', '', text)
     return text.strip()
 
 
@@ -119,7 +148,7 @@ def generate_readme(project_structure: str, file_contents: str) -> str:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Parroty AI Documentation Assistant")
-    parser.add_argument('command', nargs='?', help="The command to execute: 'comment' or 'readme'.")
+    parser.add_argument('command', nargs='?', help="The command to execute: 'comment', 'docstring', or 'readme'.")
     parser.add_argument('args', nargs='*', help="Arguments for the command.")
 
     parsed_args = parser.parse_args()
@@ -131,6 +160,13 @@ if __name__ == "__main__":
         code_snippet = parsed_args.args[0]
         comment = generate_comment(code_snippet)
         print(comment)
+    elif parsed_args.command == "docstring":
+        if len(parsed_args.args) < 1:
+            print("Error: 'docstring' command requires a code snippet.", file=sys.stderr)
+            sys.exit(1)
+        code_snippet = parsed_args.args[0]
+        docstring = generate_docstring(code_snippet)
+        print(docstring)
     elif parsed_args.command == "readme":
         if len(parsed_args.args) < 2:
             print("Error: 'readme' command requires project structure and file contents.", file=sys.stderr)
@@ -142,5 +178,5 @@ if __name__ == "__main__":
     elif parsed_args.command is None:
         print("Hello from Python!")
     else:
-        print(f"Invalid command: {parsed_args.command}. Available commands: comment, readme", file=sys.stderr)
+        print(f"Invalid command: {parsed_args.command}. Available commands: comment, docstring, readme", file=sys.stderr)
         sys.exit(1)
