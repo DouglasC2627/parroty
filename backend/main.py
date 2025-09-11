@@ -75,7 +75,13 @@ def generate_docstring(code_snippet: str) -> str:
     if MODEL:
         response = MODEL.generate_content(docstring_prompt)
         # wrap response into docstring.
-        return f'{response.text}'
+        content = response.text.strip()
+        if "\n" in content:
+            # For multi-line docstrings, PEP 257 says the closing quotes should be on their own line.
+            return f'"""{content}\n"""'
+        else:
+            # For one-line docstrings.
+            return f'"""{content}"""'
     return "Error: Model not initialized."
 
 
@@ -142,7 +148,7 @@ def generate_readme(project_structure: str, file_contents: str) -> str:
     if MODEL:
         response = MODEL.generate_content(readme_prompt)
         cleaned_response = clean_markdown_response(response.text)
-        return cleaned_response.text
+        return cleaned_response
     return "Error: Model not initialized."
 
 
