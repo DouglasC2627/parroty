@@ -43,11 +43,14 @@ def generate_comment(code_snippet: str) -> str:
         **Code Snippet to summarize:**
         \n```\n{code_snippet}\n```\n    """
 
-    if MODEL:
+    if not MODEL:
+        return "Error: Model not initialized."
+    try:
         response = MODEL.generate_content(summarization_prompt)
         # wrap response into comment.
         return f'#{response.text.strip()}'
-    return "Error: Model not initialized."
+    except Exception as e:
+        return f"Error generating comment: {e}"
 
 def generate_docstring(code_snippet: str) -> str:
     """
@@ -72,7 +75,9 @@ def generate_docstring(code_snippet: str) -> str:
         **Code Snippet to summarize:**
         \n```\n{code_snippet}\n```\n    """
 
-    if MODEL:
+    if not MODEL:
+        return "Error: Model not initialized."
+    try:
         response = MODEL.generate_content(docstring_prompt)
         # wrap response into docstring.
         content = response.text.strip()
@@ -82,7 +87,8 @@ def generate_docstring(code_snippet: str) -> str:
         else:
             # For one-line docstrings.
             return f'"""{content}"""'
-    return "Error: Model not initialized."
+    except Exception as e:
+        return f"Error generating docstring: {e}"
 
 
 def clean_markdown_response(text: str) -> str:
@@ -145,11 +151,14 @@ def generate_readme(project_structure: str, file_contents: str) -> str:
         **Generate the `README.md` file now.**
     """
 
-    if MODEL:
+    if not MODEL:
+        return "Error: Model not initialized."
+    try:
         response = MODEL.generate_content(readme_prompt)
         cleaned_response = clean_markdown_response(response.text)
         return cleaned_response
-    return "Error: Model not initialized."
+    except Exception as e:
+        return f"Error generating README: {e}"
 
 
 if __name__ == "__main__":

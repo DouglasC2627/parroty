@@ -84,8 +84,8 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 *This final phase is about polishing the extension, ensuring it's robust, and publishing it for others to use.*
 
-* [ ] **4.1: Error Handling and UX Refinement**
-    * [ ] 4.1.1: Implement error handling for API failures or invalid code inputs. Show clear error messages to the user.
+* [x] **4.1: Error Handling and UX Refinement**
+    * [x] 4.1.1: Implement error handling for API failures or invalid code inputs. Show clear error messages to the user.
     * [ ] 4.1.2: Add progress indicators (e.g., a "loading" message) while waiting for the AI to respond.
 
 * [ ] **4.2: Finalize Documentation**
