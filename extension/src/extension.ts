@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
 			if (selectedText) {
 				vscode.window.withProgress({
 					location: vscode.ProgressLocation.Notification,
-					title: "ParrotyGenerating Comment…",
+					title: "Parroty Generating Comment…",
 					cancellable: false
 				}, (progress) => {
 					return new Promise<void>(resolve => {
