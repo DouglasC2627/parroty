@@ -59,7 +59,8 @@ Ensure you have the following software installed on your system:
         npm install
         npm run compile # This builds the extension's JavaScript files
         cd .. # Go back to the root directory
-        ## Usage
+        
+## Usage
 
 Once installed, you can launch and use the Parroty extension within VS Code.
 
