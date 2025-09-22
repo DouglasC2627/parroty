@@ -90,7 +90,7 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 
 * [x] **4.2: Finalize Documentation**
     * [x] 4.2.1: Use your own tool to generate a final `README.md` for the project.
-    * [ ] 4.2.2: Add a `CHANGELOG.md` to track versions and new features.
+    * [x] 4.2.2: Add a `CHANGELOG.md` to track versions and new features.
 
 * [ ] **4.3: Packaging & Testing**
     * [ ] 4.3.1: Test all features thoroughly in a real-world development environment.
