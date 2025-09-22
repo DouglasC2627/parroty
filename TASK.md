@@ -88,8 +88,8 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 4.1.1: Implement error handling for API failures or invalid code inputs. Show clear error messages to the user.
     * [x] 4.1.2: Add progress indicators (e.g., a "loading" message) while waiting for the AI to respond.
 
-* [ ] **4.2: Finalize Documentation**
-    * [ ] 4.2.1: Use your own tool to generate a final `README.md` for the project.
+* [x] **4.2: Finalize Documentation**
+    * [x] 4.2.1: Use your own tool to generate a final `README.md` for the project.
     * [ ] 4.2.2: Add a `CHANGELOG.md` to track versions and new features.
 
 * [ ] **4.3: Packaging & Testing**
