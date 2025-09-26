@@ -1,71 +1,117 @@
-# parroty README
+# Parroty: AI Documentation Assistant
 
-This is the README for your extension "parroty". After writing up a brief description, we recommend including the following sections.
+## About The Project
 
-## Features
+Parroty is an innovative Visual Studio Code extension designed to streamline the documentation process for developers. Leveraging the power of Google's Generative AI (Gemini), Parroty acts as an intelligent assistant that helps you generate various forms of documentation directly within your VS Code environment. Whether you need quick code comments, comprehensive function docstrings, or even an initial `README.md` for your project, Parroty aims to reduce the manual effort involved in keeping your codebase well-documented and understandable.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Getting Started
 
-For example if there is an image subfolder under your extension project workspace:
+To get a local copy of Parroty up and running, follow these steps. This project consists of a Python backend that interacts with the AI model and a TypeScript-based VS Code extension.
 
-\!\[feature X\]\(images/feature-x.png\)
+### Prerequisites
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Ensure you have the following software installed on your system:
 
-## Requirements
+*   **Node.js & npm:** For building and running the VS Code extension.
+    *   LTS version recommended. You can download it from [nodejs.org](https://nodejs.org/).
+    *   Verify installation:
+        ```bash
+        node -v
+        npm -v
+        ```
+*   **Python 3.8+ & pip:** For the AI backend.
+    *   Download from [python.org](https://www.python.org/).
+    *   Verify installation:
+        ```bash
+        python3 -V
+        pip3 -V
+        ```
+*   **Visual Studio Code:** The editor for which this extension is developed.
+    *   Download from [code.visualstudio.com](https://code.visualstudio.com/).
+*   **Google Gemini API Key:** Parroty uses the Google Gemini API.
+    *   Obtain a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### Installation
 
-## Extension Settings
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/DouglasC2627/parroty.git
+    cd parroty
+    ```
+2.  **Run the setup script:**
+    The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
+    ```bash
+    chmod +x setup.sh
+    ./setup.sh
+    ```
+    *This script will attempt to set up a Python virtual environment for the backend and install Node.js dependencies for the extension.*
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+3.  **Manual Installation (if `setup.sh` fails or for detailed control):**
 
-For example:
+    *   **Backend Setup:**
+        Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
+        ```bash
+        cd backend
+        python3 -m venv venv
+        source venv/bin/activate # On Windows, use `.\venv\Scripts\activate`
+        pip install -r requirements.txt
+        cd .. # Go back to the root directory
+        ```
+    *   **VS Code Extension Setup:**
+        Navigate to the `extension` directory and install Node.js dependencies:
+        ```bash
+        cd extension
+        npm install
+        npm run compile # This builds the extension's JavaScript files
+        cd .. # Go back to the root directory
+        ```
 
-This extension contributes the following settings:
+## Usage
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Once installed, you can launch and use the Parroty extension within VS Code.
 
-## Known Issues
+1.  **Open the Project in VS Code:**
+    Open the root `parroty` folder in Visual Studio Code.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+2.  **Configure Gemini API Key:**
+    The extension requires your Google Gemini API key to function.
+    *   Open VS Code Settings (`File > Preferences > Settings` or `Code > Preferences > Settings` on macOS, or `Ctrl+,` / `Cmd+,`).
+    *   Search for "Parroty".
+    *   Locate the `Parroty: Gemini Api Key` setting and paste your Google Gemini API key into the input field.
 
-## Release Notes
+3.  **Run the Extension (for development):**
+    If you are running from source for development:
+    *   Go to the Run and Debug view (`Ctrl+Shift+D` or `Cmd+Shift+D`).
+    *   Select "Run Extension" from the dropdown at the top.
+    *   Click the green play button. This will launch a new VS Code window (Extension Development Host) with the Parroty extension activated.
 
-Users appreciate release notes as you update your extension.
+4.  **Using the AI Documentation Assistant:**
 
-### 1.0.0
+    *   **Generate Comment:**
+        1.  Select a block of code (function, class, or a few lines) in your active editor.
+        2.  Right-click on the selection.
+        3.  Choose "Parroty > Generate Comment" from the context menu.
+        4.  The AI will generate a comment or a brief explanation for the selected code.
 
-Initial release of ...
+    *   **Generate Docstring:**
+        1.  Place your cursor inside a function or class definition.
+        2.  Right-click.
+        3.  Choose "Parroty > Generate Docstring".
+        4.  The AI will attempt to generate a suitable docstring for the selected code element.
 
-### 1.0.1
+    *   **Generate `README.md`:**
+        1.  Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`).
+        2.  Type "Parroty" and select "Parroty > Generate README.md".
+        3.  The extension will analyze your open project and generate a draft `README.md` file based on its understanding of the project structure and content. This will be created in your project's root directory.
 
-Fixed issue #.
+## Contributing
 
-### 1.1.0
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Added features X, Y, and Z.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also open an issue with the tag "enhancement".
 
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
