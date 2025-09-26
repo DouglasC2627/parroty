@@ -92,10 +92,10 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 4.2.1: Use your own tool to generate a final `README.md` for the project.
     * [x] 4.2.2: Add a `CHANGELOG.md` to track versions and new features.
 
-* [ ] **4.3: Packaging & Testing**
+* [x] **4.3: Packaging & Testing**
     * [x] 4.3.1: Test all features thoroughly in a real-world development environment.
     * [x] 4.3.2: Install `vsce` (`npm install -g @vscode/vsce`).
-    * [ ] 4.3.3: Package the extension into a `.vsix` file using `vsce package`.
+    * [x] 4.3.3: Package the extension into a `.vsix` file using `vsce package`.
 
 * [ ] **4.4: Publish to Marketplace**
     * [ ] 4.4.1: Create a publisher account on the Visual Studio Marketplace.
