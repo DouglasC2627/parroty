@@ -4,6 +4,10 @@
   "description": "AI Documentation Assistant",
   "publisher": "douglas",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DouglasC2627/parroty.git"
+  },
   "engines": {
     "vscode": "^1.103.0"
   },
