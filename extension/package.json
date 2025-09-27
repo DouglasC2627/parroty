@@ -3,7 +3,7 @@
   "displayName": "parroty",
   "description": "AI Documentation Assistant",
   "publisher": "DouglasC627",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/DouglasC2627/parroty.git"
@@ -11,7 +11,9 @@
   "engines": {
     "vscode": "^1.103.0"
   },
+  "icon": "images/logo.png",
   "categories": [
+    "AI",
     "Other"
   ],
   "activationEvents": [ ],

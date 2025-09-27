@@ -91,6 +91,7 @@ This document outlines all the necessary steps to build, test, and deploy the AI
 * [x] **4.2: Finalize Documentation**
     * [x] 4.2.1: Use your own tool to generate a final `README.md` for the project.
     * [x] 4.2.2: Add a `CHANGELOG.md` to track versions and new features.
+    * [x] 4.2.3: Add a logo/icon for the extension.
 
 * [x] **4.3: Packaging & Testing**
     * [x] 4.3.1: Test all features thoroughly in a real-world development environment.
@@ -98,6 +99,9 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 4.3.3: Package the extension into a `.vsix` file using `vsce package`.
 
 * [ ] **4.4: Publish to Marketplace**
+* [x] **4.4: Publish to Marketplace**
     * [x] 4.4.1: Create a publisher account on the Visual Studio Marketplace.
     * [ ] 4.4.2: Log in with `vsce login <publisher_name>`.
     * [ ] 4.4.3: Publish the extension using `vsce publish`.
+    * [x] 4.4.2: Log in with `vsce login <publisher_name>`.
+    * [x] 4.4.3: Publish the extension using `vsce publish`.
