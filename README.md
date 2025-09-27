@@ -2,6 +2,8 @@
 
 ## About The Project
 
+(this README markdown was created with Parroty's `Generate README.md` command)
+
 Parroty is an innovative Visual Studio Code extension designed to streamline the documentation process for developers. Leveraging the power of Google's Generative AI (Gemini), Parroty acts as an intelligent assistant that helps you generate various forms of documentation directly within your VS Code environment. Whether you need quick code comments, comprehensive function docstrings, or even an initial `README.md` for your project, Parroty aims to reduce the manual effort involved in keeping your codebase well-documented and understandable.
 
 ## Getting Started
@@ -32,12 +34,10 @@ Ensure you have the following software installed on your system:
 ### Installation
 
 1.  **Clone the repository:**
-    *   bash
     1.   `git clone https://github.com/DouglasC2627/parroty.git`
     2.   `cd parroty`
 2.  **Run the setup script:**
     *   The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
-    *   bash
     1.   `chmod +x setup.sh`
     2.   `./setup.sh`: This script will attempt to set up a Python virtual environment for the backend and install Node.js dependencies for the extension.
 
@@ -45,19 +45,17 @@ Ensure you have the following software installed on your system:
 
     *   **Backend Setup:**
         *   Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
-        *   bash
-        1.   `cd backend`
-        2.   `python3 -m venv venv`
-        3.   `source venv/bin/activate` # On Windows, use `.\venv\Scripts\activate`
-        4.   `pip install -r requirements.txt`
-        5.   `cd ..` # Go back to the root directory
+            1.   `cd backend`
+            2.   `python3 -m venv venv`
+            3.   `source venv/bin/activate` # On Windows, use `.\venv\Scripts\activate`
+            4.   `pip install -r requirements.txt`
+            5.   `cd ..` # Go back to the root directory
     *   **VS Code Extension Setup:**
         *   Navigate to the `extension` directory and install Node.js dependencies:
-        *   bash
-        1.   `cd extension`
-        2.   `npm install`
-        3.   `npm run compile` # This builds the extension's JavaScript files
-        4.   `cd ..` # Go back to the root directory
+            1.   `cd extension`
+            2.   `npm install`
+            3.   `npm run compile` # This builds the extension's JavaScript files
+            4.   `cd ..` # Go back to the root directory
         
 ## Usage
 
