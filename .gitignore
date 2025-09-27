@@ -17,7 +17,8 @@ node_modules/
 # VS Code
 # Ignore editor-specific settings and packaged extension files (Task 4.3.3)
 .vscode/
-*.vsix
+*.
+images/
 
 # Environment variables
 # Ignore environment-specific files (e.g., for API keys)
