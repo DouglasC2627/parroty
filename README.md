@@ -15,16 +15,16 @@ Ensure you have the following software installed on your system:
 *   **Node.js & npm:** For building and running the VS Code extension.
     *   LTS version recommended. You can download it from [nodejs.org](https://nodejs.org/).
     *   Verify installation:
-        bash
-        node -v
-        npm -v
-        *   **Python 3.8+ & pip:** For the AI backend.
+        *   bash
+        *   `node -v`
+        *   `npm -v`
+*   **Python 3.8+ & pip:** For the AI backend.
     *   Download from [python.org](https://www.python.org/).
     *   Verify installation:
-        bash
-        python3 -V
-        pip3 -V
-        *   **Visual Studio Code:** The editor for which this extension is developed.
+        *   bash
+        *   `python3 -V`
+        *   `pip3 -V`
+*   **Visual Studio Code:** The editor for which this extension is developed.
     *   Download from [code.visualstudio.com](https://code.visualstudio.com/).
 *   **Google Gemini API Key:** Parroty uses the Google Gemini API.
     *   Obtain a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
@@ -32,33 +32,32 @@ Ensure you have the following software installed on your system:
 ### Installation
 
 1.  **Clone the repository:**
-    bash
-    git clone https://github.com/DouglasC2627/parroty.git
-    cd parroty
+    *   bash
+    1.   `git clone https://github.com/DouglasC2627/parroty.git`
+    2.   `cd parroty`
 2.  **Run the setup script:**
-    The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
-    bash
-    chmod +x setup.sh
-    ./setup.sh
-    *This script will attempt to set up a Python virtual environment for the backend and install Node.js dependencies for the extension.*
+    *   The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
+    *   bash
+    1.   `chmod +x setup.sh`
+    2.   `./setup.sh`: This script will attempt to set up a Python virtual environment for the backend and install Node.js dependencies for the extension.
 
 3.  **Manual Installation (if `setup.sh` fails or for detailed control):**
 
     *   **Backend Setup:**
-        Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
-        bash
-        cd backend
-        python3 -m venv venv
-        source venv/bin/activate # On Windows, use `.\venv\Scripts\activate`
-        pip install -r requirements.txt
-        cd .. # Go back to the root directory
+        *   Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
+        *   bash
+        1.   `cd backend`
+        2.   `python3 -m venv venv`
+        3.   `source venv/bin/activate` # On Windows, use `.\venv\Scripts\activate`
+        4.   `pip install -r requirements.txt`
+        5.   `cd ..` # Go back to the root directory
     *   **VS Code Extension Setup:**
-        Navigate to the `extension` directory and install Node.js dependencies:
-        bash
-        cd extension
-        npm install
-        npm run compile # This builds the extension's JavaScript files
-        cd .. # Go back to the root directory
+        *   Navigate to the `extension` directory and install Node.js dependencies:
+        *   bash
+        1.   `cd extension`
+        2.   `npm install`
+        3.   `npm run compile` # This builds the extension's JavaScript files
+        4.   `cd ..` # Go back to the root directory
         
 ## Usage
 
@@ -99,8 +98,6 @@ Once installed, you can launch and use the Parroty extension within VS Code.
         3.  The extension will analyze your open project and generate a draft `README.md` file based on its understanding of the project structure and content. This will be created in your project's root directory.
 
 ## Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also open an issue with the tag "enhancement".
 
