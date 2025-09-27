@@ -98,6 +98,6 @@ This document outlines all the necessary steps to build, test, and deploy the AI
     * [x] 4.3.3: Package the extension into a `.vsix` file using `vsce package`.
 
 * [ ] **4.4: Publish to Marketplace**
-    * [ ] 4.4.1: Create a publisher account on the Visual Studio Marketplace.
+    * [x] 4.4.1: Create a publisher account on the Visual Studio Marketplace.
     * [ ] 4.4.2: Log in with `vsce login <publisher_name>`.
     * [ ] 4.4.3: Publish the extension using `vsce publish`.
