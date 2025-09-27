@@ -5,7 +5,10 @@ venv/
 
 # Ignore the Python cache
 __pycache__/
-*.pyc
+*.
+
+# Ignore MacOS metadata file
+.DS_Store
 
 # Node.js
 # Ignore the dependencies folder
