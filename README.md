@@ -35,7 +35,7 @@ Ensure you have the following software installed on your system:
     bash
     git clone https://github.com/DouglasC2627/parroty.git
     cd parroty
-    2.  **Run the setup script:**
+2.  **Run the setup script:**
     The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
     bash
     chmod +x setup.sh
@@ -52,7 +52,7 @@ Ensure you have the following software installed on your system:
         source venv/bin/activate # On Windows, use `.\venv\Scripts\activate`
         pip install -r requirements.txt
         cd .. # Go back to the root directory
-        *   **VS Code Extension Setup:**
+    *   **VS Code Extension Setup:**
         Navigate to the `extension` directory and install Node.js dependencies:
         bash
         cd extension
