@@ -44,8 +44,8 @@ Ensure you have the following software installed on your system:
 3.  **Manual Installation (if `setup.sh` fails or for detailed control):**
 
     *   **Backend Setup:**
-        *   Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
-            1.   `cd backend`
+        *   Navigate to the `extension/backend` directory, create a virtual environment, activate it, and install Python dependencies:
+            1.   `cd extension/backend`
             2.   `python3 -m venv venv`
             3.   `source venv/bin/activate` # On Windows, use `.\venv\Scripts\activate`
             4.   `pip install -r requirements.txt`

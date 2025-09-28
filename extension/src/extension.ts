@@ -29,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 							return;
 						}
 
-						const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+						const pythonScriptPath = path.join(context.extensionPath, 'backend', 'main.py');
 						const pythonProcess = spawn('python3', [pythonScriptPath, 'comment', selectedText], {
 							env: { ...process.env, GEMINI_API_KEY: apiKey }
 						});
@@ -90,7 +90,7 @@ export function activate(context: vscode.ExtensionContext) {
 							return;
 						}
 
-						const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+						const pythonScriptPath = path.join(context.extensionPath, 'backend', 'main.py');
 						const pythonProcess = spawn('python3', [pythonScriptPath, 'docstring', selectedText], {
 							env: { ...process.env, GEMINI_API_KEY: apiKey }
 						});
@@ -163,7 +163,7 @@ export function activate(context: vscode.ExtensionContext) {
 						return;
 					}
 
-					const pythonScriptPath = path.join(context.extensionPath, '../backend', 'main.py');
+					const pythonScriptPath = path.join(context.extensionPath, 'backend', 'main.py');
 					const pythonProcess = spawn('python3', [pythonScriptPath, 'readme', fileList, keyFilesContent], {
 						env: { ...process.env, GEMINI_API_KEY: apiKey }
 					});
