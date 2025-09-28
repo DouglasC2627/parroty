@@ -3,7 +3,7 @@
   "displayName": "parroty",
   "description": "AI Documentation Assistant",
   "publisher": "DouglasC627",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/DouglasC2627/parroty.git"
@@ -23,16 +23,20 @@
   "contributes": {
     "commands": [
       {
+        "command": "parroty.setupPython",
+        "title": "Parroty: Setup Python Environment"
+      },
+      {
         "command": "parroty.generateComment",
-        "title": "parroty > Generate Comment"
+        "title": "Parroty > Generate Comment"
       },
       {
         "command": "parroty.generateDocstring",
-        "title": "parroty > Generate Docstring"
+        "title": "Parroty > Generate Docstring"
       },
       {
         "command": "parroty.generateReadme",
-        "title": "parroty > Generate README.md"
+        "title": "Parroty > Generate README.md"
       }
     ],
     "menus": {
@@ -67,8 +71,7 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test",
-    "postinstall": "bash ../setup.sh"
+    "test": "vscode-test"
   },
   "devDependencies": {
     "@types/vscode": "^1.103.0",

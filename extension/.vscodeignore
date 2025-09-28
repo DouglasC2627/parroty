@@ -1,4 +1,5 @@
 .vscode/**
+backend/venv/**
 .vscode-test/**
 out/**
 node_modules/**
