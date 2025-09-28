@@ -6,7 +6,18 @@ Parroty is an innovative Visual Studio Code extension designed to streamline the
 
 ## Getting Started
 
-To get a local copy of Parroty up and running, follow these steps. This project consists of a Python backend that interacts with the AI model and a TypeScript-based VS Code extension.
+### For Users
+
+The easiest way to use Parroty is to install it directly from the Visual Studio Code Marketplace.
+
+1.  Open VS Code.
+2.  Go to the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
+3.  Search for "Parroty" and click **Install**.
+4.  Configure your Gemini API Key in the settings (see Usage section below).
+
+### For Developers (Contributing)
+
+To get a local copy up and running for development, follow these steps. This project consists of a Python backend and a TypeScript-based VS Code extension.
 
 ### Prerequisites
 
@@ -33,7 +44,7 @@ Ensure you have the following software installed on your system:
 
 ### Installation
 
-1.  **Clone the repository:**
+1.  **Clone the repository (for developers):**
     ```bash
     git clone https://github.com/DouglasC2627/parroty.git
     cd parroty
