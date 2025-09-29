@@ -38,8 +38,7 @@ README.md file generated:
 
 ## Requirements
 
-1.  **Visual Studio Code**: The extension is built for VS Code.
-2.  **Google Gemini API Key**: Parroty uses the Google Gemini API to generate content. You can obtain a free API key from Google AI Studio.
+**Google Gemini API Key**: Parroty uses the Google Gemini API to generate content. You can obtain a free API key from Google AI Studio.
 
 ---
 
