@@ -6,6 +6,8 @@
 
 Parroty is an innovative Visual Studio Code extension designed to streamline the documentation process for developers. Leveraging the power of Google's Generative AI (Gemini), Parroty acts as an intelligent assistant that helps you generate various forms of documentation directly within your VS Code environment. Whether you need quick code comments, comprehensive function docstrings, or even an initial `README.md` for your project, Parroty aims to reduce the manual effort involved in keeping your codebase well-documented and understandable.
 
+Visual Studio Code [Marketplace](https://marketplace.visualstudio.com/items?itemName=DouglasC627.parroty&ssr=false#overview)
+
 ## Getting Started
 
 To get a local copy of Parroty up and running, follow these steps. This project consists of a Python backend that interacts with the AI model and a TypeScript-based VS Code extension.
