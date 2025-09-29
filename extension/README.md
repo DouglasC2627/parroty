@@ -1,6 +1,6 @@
 # Parroty: Your AI Documentation Assistant
 
-![Parroty Logo](images/logo2.png)
+![Parroty Logo](https://github.com/DouglasC2627/parroty/blob/main/extension/images/logo2.png)
 
 ## About The Project
 
@@ -16,11 +16,11 @@ Quickly document any piece of code. Select a function, class, or any code block,
 
 *Right-click on selected code and choose `Parroty > Generate Comment` or `Parroty > Generate Docstring`.*
 
-#### Generate a Comment
-![Generating a comment with Parroty](images/parroty-generate-comment.gif)
+### Generate a Comment
+![Generating a comment with Parroty](https://github.com/DouglasC2627/parroty/blob/main/extension/images/parroty-generate-comment.gif)
 
 ####Generate a Docstring
-![Generating a docstring with Parroty](images/parroty-generate-docstring.gif)
+![Generating a docstring with Parroty](https://github.com/DouglasC2627/parroty/blob/main/extension/images/parroty-generate-docstring.gif)
 
 ### Generate a Project README.md
 
@@ -28,11 +28,11 @@ Bootstrap your project's documentation in seconds. Parroty analyzes your workspa
 
 *Run `Parroty > Generate README.md` from the Command Palette (`Ctrl+Shift+P`).*
 
-####Generate a README.md file
-![Generating a README.md with Parroty](images/parroty-generate-readme.gif)
+**Generate a README.md file**
+![Generating a README.md with Parroty](https://github.com/DouglasC2627/parroty/blob/main/extension/images/parroty-generate-readme.gif)
 
-README.md file generated:
-![README.md generated with Parroty](images/parroty-readme-generated.gif)
+**README.md file generated:**
+![README.md generated with Parroty](https://github.com/DouglasC2627/parroty/blob/main/extension/images/parroty-readme-generated.gif)
 
 ---
 
@@ -42,14 +42,14 @@ README.md file generated:
 
 ---
 
-## Extension Setup
+## Extension Setup (Required Before Start)
 
 After installing the extension from the Marketplace, you must configure your API key.
 
 1.  Open VS Code Settings (`Ctrl+,` or `Cmd+,`).
 2.  Search for "Parroty".
 3.  In the `Parroty: Gemini Api Key` field, paste your Google Gemini API key.
-![Set up API key for Parroty](images/parroty-set-api-key.gif)
+![Set API key for Parroty](https://github.com/DouglasC2627/parroty/blob/main/extension/images/parroty-set-api-key.gif)
 
 The extension is now ready to use!
 
@@ -57,7 +57,7 @@ The extension is now ready to use!
 
 ## Release Notes
 
-All notable changes to this project are documented in the CHANGELOG.md file.
+All notable changes to this project are documented in the [CHANGELOG.md](CHANGELOG.md) file.
 
 ---
 

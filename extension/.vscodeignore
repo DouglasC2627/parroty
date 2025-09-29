@@ -1,5 +1,8 @@
 .vscode/**
 backend/venv/**
+images/**
+!images/logo2.png
+
 .vscode-test/**
 out/**
 node_modules/**
