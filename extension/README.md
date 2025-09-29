@@ -1,128 +1,67 @@
-# Parroty: AI Documentation Assistant
+# Parroty: Your AI Documentation Assistant
+
+![Parroty Logo](https://raw.githubusercontent.com/DouglasC2627/parroty/main/assets/parroty-logo-v2.png)
 
 ## About The Project
 
-Parroty is an innovative Visual Studio Code extension designed to streamline the documentation process for developers. Leveraging the power of Google's Generative AI (Gemini), Parroty acts as an intelligent assistant that helps you generate various forms of documentation directly within your VS Code environment. Whether you need quick code comments, comprehensive function docstrings, or even an initial `README.md` for your project, Parroty aims to reduce the manual effort involved in keeping your codebase well-documented and understandable.
+Parroty is a VS Code extension designed to streamline your documentation process. Powered by Google's Gemini AI, Parroty acts as an assistant to help you generate code comments, docstrings, and complete a draft `README.md` file directly within your project folder.
 
-## Getting Started
+---
 
-### For Users
+## Features
 
-The easiest way to use Parroty is to install it directly from the Visual Studio Code Marketplace.
+### Generate Comments & Docstrings
 
-1.  Open VS Code.
-2.  Go to the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
-3.  Search for "Parroty" and click **Install**.
-4.  Configure your Gemini API Key in the settings (see Usage section below).
+Quickly document any piece of code. Select a function, class, or any code block, and Parroty will generate a concise comment or a detailed docstring explaining its purpose, parameters, and return values.
 
-### For Developers (Contributing)
+*Right-click on selected code and choose `Parroty > Generate Comment` or `Parroty > Generate Docstring`.*
 
-To get a local copy up and running for development, follow these steps. This project consists of a Python backend and a TypeScript-based VS Code extension.
+**(GIF of generating a comment/docstring will go here)**
 
-### Prerequisites
+### Generate a Project README.md
 
-Ensure you have the following software installed on your system:
+Bootstrap your project's documentation in seconds. Parroty analyzes your workspace's file structure and content to generate a comprehensive `README.md` file, complete with sections for project description, installation, and usage.
 
-*   **Node.js & npm:** For building and running the VS Code extension.
-    *   LTS version recommended. You can download it from [nodejs.org](https://nodejs.org/).
-    *   Verify installation:
-        ```bash
-        node -v
-        npm -v
-        ```
-*   **Python 3.8+ & pip:** For the AI backend.
-    *   Download from [python.org](https://www.python.org/).
-    *   Verify installation:
-        ```bash
-        python3 -V
-        pip3 -V
-        ```
-*   **Visual Studio Code:** The editor for which this extension is developed.
-    *   Download from [code.visualstudio.com](https://code.visualstudio.com/).
-*   **Google Gemini API Key:** Parroty uses the Google Gemini API.
-    *   Obtain a free API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+*Run `Parroty > Generate README.md` from the Command Palette (`Ctrl+Shift+P`).*
 
-### Installation
+**(GIF of generating a README will go here)**
 
-1.  **Clone the repository (for developers):**
-    ```bash
-    git clone https://github.com/DouglasC2627/parroty.git
-    cd parroty
-    ```
-2.  **Run the setup script:**
-    The project includes a `setup.sh` script to automate the installation of dependencies for both the backend and the extension.
-    ```bash
-    chmod +x setup.sh
-    ./setup.sh
-    ```
-    *This script will attempt to set up a Python virtual environment for the backend and install Node.js dependencies for the extension.*
+---
 
-3.  **Manual Installation (if `setup.sh` fails or for detailed control):**
+## Requirements
 
-    *   **Backend Setup:**
-        Navigate to the `backend` directory, create a virtual environment, activate it, and install Python dependencies:
-        ```bash
-        cd backend
-        python3 -m venv venv
-        source venv/bin/activate # On Windows, use `.\venv\Scripts\activate`
-        pip install -r requirements.txt
-        cd .. # Go back to the extension directory
-        ```
-    *   **VS Code Extension Setup:**
-        Navigate to the `extension` directory and install Node.js dependencies:
-        ```bash
-        cd extension
-        npm install
-        npm run compile # This builds the extension's JavaScript files
-        cd .. # Go back to the root directory
-        ```
+1.  **Visual Studio Code**: The extension is built for VS Code.
+2.  **Google Gemini API Key**: Parroty uses the Google Gemini API to generate content. You can obtain a free API key from Google AI Studio.
 
-## Usage
+---
 
-Once installed, you can launch and use the Parroty extension within VS Code.
+## Extension Setup
 
-1.  **Open the Project in VS Code:**
-    Open the root `parroty` folder in Visual Studio Code.
+After installing the extension from the Marketplace, you must configure your API key.
 
-2.  **Configure Gemini API Key:**
-    The extension requires your Google Gemini API key to function.
-    *   Open VS Code Settings (`File > Preferences > Settings` or `Code > Preferences > Settings` on macOS, or `Ctrl+,` / `Cmd+,`).
-    *   Search for "Parroty".
-    *   Locate the `Parroty: Gemini Api Key` setting and paste your Google Gemini API key into the input field.
+1.  Open VS Code Settings (`Ctrl+,` or `Cmd+,`).
+2.  Search for "Parroty".
+3.  In the `Parroty: Gemini Api Key` field, paste your Google Gemini API key.
 
-3.  **Run the Extension (for development):**
-    If you are running from source for development:
-    *   Go to the Run and Debug view (`Ctrl+Shift+D` or `Cmd+Shift+D`).
-    *   Select "Run Extension" from the dropdown at the top.
-    *   Click the green play button. This will launch a new VS Code window (Extension Development Host) with the Parroty extension activated.
+The extension is now ready to use!
 
-4.  **Using the AI Documentation Assistant:**
+---
 
-    *   **Generate Comment:**
-        1.  Select a block of code (function, class, or a few lines) in your active editor.
-        2.  Right-click on the selection.
-        3.  Choose "Parroty > Generate Comment" from the context menu.
-        4.  The AI will generate a comment or a brief explanation for the selected code.
+## Release Notes
 
-    *   **Generate Docstring:**
-        1.  Place your cursor inside a function or class definition.
-        2.  Right-click.
-        3.  Choose "Parroty > Generate Docstring".
-        4.  The AI will attempt to generate a suitable docstring for the selected code element.
+All notable changes to this project are documented in the CHANGELOG.md file.
 
-    *   **Generate `README.md`:**
-        1.  Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`).
-        2.  Type "Parroty" and select "Parroty > Generate README.md".
-        3.  The extension will analyze your open project and generate a draft `README.md` file based on its understanding of the project structure and content. This will be created in your project's root directory.
+---
 
-## Contributing
+## Contributing & Feedback
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+This is an open-source project, and contributions are welcome! If you have a suggestion, find a bug, or want to improve the extension, please visit our GitHub repository.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also open an issue with the tag "enhancement".
+---
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+## License
+
+Copyright (c) 2025 DouglasC.
+
+This project is licensed under the MIT License.
+
